@@ -1,5 +1,6 @@
 html {
-{ background-image:url('myImage.gif'); background-repeat:repeat; }    -webkit-background-size: cover;
+background-image:url('http://earthlymission.com/wp-content/uploads/2014/06/pints_in_the_sun_290614b.gif'); background-repeat:repeat;
+    -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
@@ -21,17 +22,9 @@ html {
 }
 
 
-nav {
-    background-color: #f4f4f4; /* Light Grey */
-    border-bottom: solid #000000;
-    border-top: solid #000000;
-    width: 100%;
-    margin: 0px;
-    padding-left: 20px;
-}
+
 
 #content {
-    background-color: #fff; /* White */
     padding-top: 20px;
     padding-bottom: 20px;
     padding-left: 20px;
