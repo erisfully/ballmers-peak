@@ -3,6 +3,7 @@ require 'sinatra/activerecord'
 require 'rack-flash'
 require 'sinatra/reloader'
 require 'sinatra/partial'
+require 'twitter'
 
 # include all .rb files in models directory
 Dir[File.dirname(__FILE__) + '/models/*.rb'].each { |file| require file }
@@ -25,8 +26,17 @@ class App < Sinatra::Application
     register Sinatra::Reloader
   end
 
+
+
   get "/" do
     erb :index
   end
+
+  get "http://api.gifme.io/v1/search?query=r/:beer&limit=1&page=0&key=rX7kbMzkGu7WJwvG" do
+    beer = "beer"
+    erb :beer, :locals => {beer: beer}
+  end
+
+
 
 end

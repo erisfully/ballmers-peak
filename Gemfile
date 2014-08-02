@@ -11,6 +11,7 @@ gem 'sass'
 gem 'compass'
 gem 'susy'
 gem 'sinatra-partial'
+gem 'twitter'
 
 
 group :test, :development do
