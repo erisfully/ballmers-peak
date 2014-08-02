@@ -3,7 +3,8 @@ require 'sinatra/activerecord'
 require 'rack-flash'
 require 'sinatra/reloader'
 require 'sinatra/partial'
-require 'twitter'
+require 'JSON'
+require 'open-uri'
 
 # include all .rb files in models directory
 Dir[File.dirname(__FILE__) + '/models/*.rb'].each { |file| require file }
@@ -27,16 +28,20 @@ class App < Sinatra::Application
   end
 
 
+  class Gifs
+    def gif_info
+      JSON.parse(open("http://api.gifme.io/v1/search?query=beer&limit=10&page=0&key=rX7kbMzkGu7WJwvG").read)
+    end
+
+  end
 
   get "/" do
     erb :index
   end
 
-  get "http://api.gifme.io/v1/search?query=r/:beer&limit=1&page=0&key=rX7kbMzkGu7WJwvG" do
-    beer = "beer"
-    erb :beer, :locals => {beer: beer}
+get "/beer" do
+    gifs = Gifs.new.gif_info
+    erb :beer, locals: {gifs: gifs}
   end
-
-
 
 end
