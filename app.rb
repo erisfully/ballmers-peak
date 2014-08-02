@@ -29,8 +29,8 @@ class App < Sinatra::Application
 
 
   class Gifs
-    def gif_info
-      JSON.parse(open("http://api.gifme.io/v1/search?query=beer&limit=10&page=0&key=rX7kbMzkGu7WJwvG").read)
+    def gif_info(search_term)
+      JSON.parse(open("http://api.gifme.io/v1/search?query=#{search_term}&limit=10&page=0&key=rX7kbMzkGu7WJwvG").read)
     end
 
   end
@@ -39,9 +39,14 @@ class App < Sinatra::Application
     erb :index
   end
 
-get "/beer" do
-    gifs = Gifs.new.gif_info
+get "/search_results" do
+    gifs = Gifs.new.gif_info(params[:search_term])
     erb :beer, locals: {gifs: gifs}
-  end
+end
+  #
+  # get "/search_results" do
+  #
+  #   erb :beer, locals: {gifs: gifs}
+  # end
 
 end
